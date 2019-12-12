@@ -41,13 +41,13 @@ public class DLL {
 	
 	public Person removeHead() {
 		
-		//cheking if the queue is empty
+		//checking if the queue is empty
 		if (isEmpty()) return null;
 		
 		Node aux = head;
 		
 		//checking if there is a next object in the queue
-		if (head.getPrevious() != null) {
+		if (head.getNext() != null) {
 			
 			head = head.getNext();
 			head.getPrevious().setNext(null);
@@ -58,6 +58,7 @@ public class DLL {
 			head = null;
 			tail = null;
 		}
+		
 		size--;
 		
 		return aux.getData();

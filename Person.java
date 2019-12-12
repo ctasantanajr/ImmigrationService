@@ -13,7 +13,7 @@ public class Person {
 	private String firstName;
 	private String lastName;
 	private int dateOfArrival;
-	private int passportNumber;
+	private String passportNumber;
 	private PriorityLevel priorityLevel;
 	/**
 	 * @param personId
@@ -23,7 +23,7 @@ public class Person {
 	 * @param passportNumber
 	 * @param priorityLevel
 	 */
-	private Person(int personId, String firstName, String lastName, int dateOfArrival, int passportNumber,
+	public Person(int personId, String firstName, String lastName, int dateOfArrival, String passportNumber,
 			PriorityLevel priorityLevel) {
 		this.personId = personId;
 		this.firstName = firstName;
@@ -83,13 +83,13 @@ public class Person {
 	/**
 	 * @return the passportNumber
 	 */
-	public int getPassportNumber() {
+	public String getPassportNumber() {
 		return passportNumber;
 	}
 	/**
 	 * @param passportNumber the passportNumber to set
 	 */
-	public void setPassportNumber(int passportNumber) {
+	public void setPassportNumber(String passportNumber) {
 		this.passportNumber = passportNumber;
 	}
 	/**
