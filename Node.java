@@ -17,10 +17,10 @@ public class Node {
 	 * @param previous
 	 * @param data
 	 */
-	private Node(Node next, Node previous, Person data) {
-		this.next = next;
-		this.previous = previous;
+	public Node(Person data) {
 		this.data = data;
+		next = null;
+		previous = null;
 	}
 	/**
 	 * @return the next
