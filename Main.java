@@ -13,25 +13,26 @@ public class Main {
 
 	static Scanner sc = new Scanner(System.in);
 	static Boolean run = true;
+	static DLL myList = new DLL();
+	static int personId = 0;
 
 	Main() {
 
-		DLL myList = new DLL();
-
-		Person p1 = new Person(1, "Claudio", "Santana", 12122019, "FHG1234", PriorityLevel.HIGH);
-		Node n1 = new Node(p1);
-
-		Person p2 = new Person(2, "Joice", "Scarabeli", 12122019, "FZZ2211", PriorityLevel.HIGH);
-		Node n2 = new Node(p2);
-
-		Person p3 = new Person(3, "Neusa", "Shan", 12122019, "JJK2785", PriorityLevel.HIGH);
-		Node n3 = new Node(p3);
-
-		myList.addTail(p1);
-		myList.addTail(p2);
-		myList.addTail(p3);
-
 		/*
+		 * DLL myList = new DLL();
+		 * 
+		 * Person p1 = new Person(1, "Claudio", "Santana", 12122019, "FHG1234",
+		 * PriorityLevel.HIGH); Node n1 = new Node(p1);
+		 * 
+		 * Person p2 = new Person(2, "Joice", "Scarabeli", 12122019, "FZZ2211",
+		 * PriorityLevel.HIGH); Node n2 = new Node(p2);
+		 * 
+		 * Person p3 = new Person(3, "Neusa", "Shan", 12122019, "JJK2785",
+		 * PriorityLevel.HIGH); Node n3 = new Node(p3);
+		 * 
+		 * myList.addTail(p1); myList.addTail(p2); myList.addTail(p3);
+		 * 
+		 * 
 		 * System.out.println(myList.getHead().getData());
 		 * System.out.println(myList.getTail().getData());
 		 * System.out.println(myList.getSize());
@@ -73,24 +74,24 @@ public class Main {
 			switch (answer) {
 
 			case 1:
-				printlist(myList.getHead());
+				PrintList(myList.getHead());
 				break;
 
 			case 2:
 				Person call = myList.removeHead();
-				System.out.println("The person to be called is "+call);
+				System.out.println("The person to be called is " + call);
 				break;
-				
+
 			case 3:
-				// MenuAddSelect();
-				break;	
+				AddPerson();
+				break;
 
 			case 4:
 				// MenuSearchTitle();
 				break;
 
 			case 5:
-				
+
 				break;
 
 			case 6:
@@ -114,30 +115,109 @@ public class Main {
 		System.exit(0);
 
 	}
-	
-	
+
+	// ------------------------------------------------------------------
+	// METHOD TO ADD A PERSON TO THE SYSTEM
+	// ------------------------------------------------------------------
+
+	// this method add a new method to the list of items. Before that, it
+	// instantiates a new object with all attributes received from the user
+	private static void AddPerson() {
+		// TODO Auto-generated method stub
+
+		String firstName, lastName, passport;
+		int dateOfArrival;
+		PriorityLevel priority;
+
+		personId++;
+
+		System.out.println("Enter First Name: ");
+		firstName = sc.next();
+
+		System.out.println("Enter Last Name: ");
+		lastName = sc.next();
+
+		System.out.println("Enter Date of Arrival (ddmmyyy): ");
+		dateOfArrival = sc.nextInt();
+
+		System.out.println("Enter Passport Number: ");
+		passport = sc.next();
+
+		priority = ValidPriority();
+
+		Person person = new Person(personId, firstName, lastName, dateOfArrival, passport, priority);
+
+		myList.addTail(person);
+
+	}
+
+	// ------------------------------------------------------------------
+	// METHOD TO VALID ENTERED PRIORITY LEVEL
+	// ------------------------------------------------------------------
+
+	// this method just consists the option typed by the user with the correct media
+	// format created in the enum
+	private static PriorityLevel ValidPriority() {
+		// TODO Auto-generated method stub
+
+		PriorityLevel priority = null;
+
+		try {
+
+			boolean valid = false;
+
+			do {
+				System.out.println("Enter Priority Level: (1 - High, 2 - Medium, 3 - Low)");
+				String option = sc.next();
+
+				if (option.matches("[0-9]+")) {
+					if (Integer.parseInt(option) == 1 || Integer.parseInt(option) == 2
+							|| Integer.parseInt(option) == 3) {
+						valid = true;
+						if (option.equals("1")) {
+							priority = PriorityLevel.HIGH;
+						} else if (option.equals("2")) {
+							priority = PriorityLevel.MEDIUM;
+						} else if (option.equals("3")) {
+							priority = PriorityLevel.LOW;
+						} else {
+							ValidPriority();
+						}
+					} else {
+						valid = false;
+						System.out.println("Invalid option");
+					}
+				}
+
+			} while (valid == false);
+
+		} catch (Exception e) {
+			System.out.println("Error reading input");
+		}
+
+		return priority;
+
+	}
+
 	// ------------------------------------------------------------------
 	// METHOD TO PRINT ALL THE QUEUE
 	// ------------------------------------------------------------------
-	
-	// This function prints contents of linked list starting from the first node 
-    public void printlist(Node node) 
-    { 
-        Node last = null; 
-        System.out.println("List of people in the queue:"); 
-        while (node != null) { 
-            System.out.println(node.getData().toString() + " "); 
-            last = node; 
-            node = node.getNext(); 
-        } 
-        /*System.out.println(); 
-        System.out.println("Traversal in reverse direction"); 
-        while (last != null) { 
-            System.out.print(last.getData().toString() + " "); 
-            last = last.getPrevious(); 
-        }*/ 
-    } 
-	
+
+	// This function prints contents of linked list starting from the first node
+	public void PrintList(Node node) {
+		Node last = null;
+		System.out.println("List of people in the queue:");
+		while (node != null) {
+			System.out.println(node.getData().toString() + " ");
+			last = node;
+			node = node.getNext();
+		}
+		/*
+		 * System.out.println(); System.out.println("Traversal in reverse direction");
+		 * while (last != null) { System.out.print(last.getData().toString() + " ");
+		 * last = last.getPrevious(); }
+		 */
+	}
 
 	// --------------------------------------------------------------------
 	// METHOD TO WELCOME USER
