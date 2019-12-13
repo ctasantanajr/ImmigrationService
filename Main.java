@@ -57,12 +57,13 @@ public class Main {
 			System.out.println("**********************************************************************");
 
 			System.out.println("Enter 1 to list the queue");
-			System.out.println("Enter 2 to add a person to the queue");
-			System.out.println("Enter 3 to remove a person from the queue");
-			System.out.println("Enter 4 to search the position of a person in the queue");
-			System.out.println("Enter 5 to load Immigration Service Appointment records");
-			System.out.println("Enter 6 to save Immigration Service Appointment records");
-			System.out.println("Enter 7 to quit without saving");
+			System.out.println("Enter 2 to call the next person from the queue");
+			System.out.println("Enter 3 to add a person to the system");
+			System.out.println("Enter 4 to delete a person from the system");
+			System.out.println("Enter 5 to search the position of a person in the queue");
+			System.out.println("Enter 6 to load Immigration Service Appointment records");
+			System.out.println("Enter 7 to save Immigration Service Appointment records");
+			System.out.println("Enter 8 to quit without saving");
 
 			int answer = sc.nextInt();
 
@@ -76,22 +77,27 @@ public class Main {
 				break;
 
 			case 2:
-				// MenuAddSelect();
+				Person call = myList.removeHead();
+				System.out.println("The person to be called is "+call);
 				break;
-
+				
 			case 3:
+				// MenuAddSelect();
+				break;	
+
+			case 4:
 				// MenuSearchTitle();
 				break;
 
-			case 4:
+			case 5:
 				
 				break;
 
-			case 5:
+			case 6:
 				// loadFiles();
 				break;
 
-			case 6:
+			case 7:
 				/*
 				 * saveMusicRecord(); saveLiveConcertRecord(); saveMovieRecord();
 				 * saveBoxSetRecord();
@@ -99,7 +105,7 @@ public class Main {
 				System.out.println("Thanks for using Immigration Service Appointment System!");
 				break;
 
-			case 7:
+			case 8:
 				EndProgram();
 				break;
 
