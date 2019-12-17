@@ -146,8 +146,21 @@ public class Main {
 		priority = ValidPriority();
 
 		Person person = new Person(personId, firstName, lastName, dateOfArrival, passport, priority);
+		
+		
+		//Checking priorities to add the person in the right position in the queue
+		if (priority == PriorityLevel.LOW) {
+			
+			myList.addTail(person);
+		}else if (priority == PriorityLevel.MEDIUM) {
+			
+			myList.addMedium(person);
+			
+		}else {
+			myList.addHead(person);
+		}
 
-		myList.addTail(person);
+		
 
 	}
 

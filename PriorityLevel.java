@@ -9,9 +9,19 @@ package assignment;
  */
 public enum PriorityLevel {
 	
-	HIGH,
-	MEDIUM,
-	LOW;
+	HIGH (1),
+	MEDIUM (2),
+	LOW (3);
 	
-
+private int level;
+	
+	PriorityLevel (int level){
+		this.level = level;
+	}
+	
+	public int getLevel() {
+		return level;
+	}
+	
+	
 }

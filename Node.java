@@ -9,8 +9,7 @@ package assignment;
  */
 public class Node {
 	
-	private Node next;
-	private Node previous;
+	private Node next, previous;
 	private Person data;
 	/**
 	 * @param next
