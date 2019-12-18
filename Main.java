@@ -18,34 +18,6 @@ public class Main {
 
 	Main() {
 
-		/*
-		 * DLL myList = new DLL();
-		 * 
-		 * Person p1 = new Person(1, "Claudio", "Santana", 12122019, "FHG1234",
-		 * PriorityLevel.HIGH); Node n1 = new Node(p1);
-		 * 
-		 * Person p2 = new Person(2, "Joice", "Scarabeli", 12122019, "FZZ2211",
-		 * PriorityLevel.HIGH); Node n2 = new Node(p2);
-		 * 
-		 * Person p3 = new Person(3, "Neusa", "Shan", 12122019, "JJK2785",
-		 * PriorityLevel.HIGH); Node n3 = new Node(p3);
-		 * 
-		 * myList.addTail(p1); myList.addTail(p2); myList.addTail(p3);
-		 * 
-		 * 
-		 * System.out.println(myList.getHead().getData());
-		 * System.out.println(myList.getTail().getData());
-		 * System.out.println(myList.getSize());
-		 * 
-		 * System.out.println("-------------------------------------------------");
-		 * 
-		 * Person test = myList.removeHead();
-		 * 
-		 * System.out.println("The person served was "+test);
-		 * System.out.println(myList.getHead().getData());
-		 * System.out.println(myList.getTail().getData());
-		 * System.out.println(myList.getSize());
-		 */
 
 		Welcome();
 
@@ -62,9 +34,7 @@ public class Main {
 			System.out.println("Enter 3 to add a person to the system");
 			System.out.println("Enter 4 to delete a person from the system");
 			System.out.println("Enter 5 to search the position of a person in the queue");
-			System.out.println("Enter 6 to load Immigration Service Appointment records");
-			System.out.println("Enter 7 to save Immigration Service Appointment records");
-			System.out.println("Enter 8 to quit without saving");
+			System.out.println("Enter 6 to quit without saving");
 
 			int answer = sc.nextInt();
 
@@ -87,26 +57,15 @@ public class Main {
 				break;
 
 			case 4:
-				// MenuSearchTitle();
+				System.out.println("Under construction");
 				break;
 
 			case 5:
-
+				System.out.println("Under construction");
 				break;
+
 
 			case 6:
-				// loadFiles();
-				break;
-
-			case 7:
-				/*
-				 * saveMusicRecord(); saveLiveConcertRecord(); saveMovieRecord();
-				 * saveBoxSetRecord();
-				 */
-				System.out.println("Thanks for using Immigration Service Appointment System!");
-				break;
-
-			case 8:
 				EndProgram();
 				break;
 
@@ -225,11 +184,7 @@ public class Main {
 			last = node;
 			node = node.getNext();
 		}
-		/*
-		 * System.out.println(); System.out.println("Traversal in reverse direction");
-		 * while (last != null) { System.out.print(last.getData().toString() + " ");
-		 * last = last.getPrevious(); }
-		 */
+		
 	}
 
 	// --------------------------------------------------------------------

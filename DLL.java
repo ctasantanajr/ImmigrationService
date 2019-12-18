@@ -11,11 +11,17 @@ public class DLL {
 
 	private Node head = null, tail = null;
 	private int size = 0;
+	
+	
+	// ------------------------------------------------------------------
+	// METHOD TO ADD HIGH PRIORITY TO THE HEAD OF THE QUEUE
+	// ------------------------------------------------------------------
 
 	// the new object is going to receive just data as parameter
 	// because when instantiating a new object, both nodes are
 	// being set as "null"
 	public void addHead(Person data) {
+
 		Node newNode = new Node(data);
 
 		// In order to add a new person, it is necessary to check
@@ -25,19 +31,73 @@ public class DLL {
 			tail = newNode;
 		} else {
 
-			// the previous head receive
-			// now the reference of the new object
-			head.setPrevious(newNode);
+			// If p is less than or equal front
+			// node's priority, then insert at
+			// the front.
+			if (newNode.getData().getPriorityLevel().getLevel() < head.getData().getPriorityLevel().getLevel()) {
+				head.setPrevious(newNode);
+				newNode.setNext(head);
+				head = newNode;
+			}
 
-			// the new object now is pointing to the following object,
-			// becoming the new head of the queue
-			newNode.setNext(head);
-			head = newNode;
+			// If p is more rear node's priority,
+			// then insert after the rear.
+			else if (newNode.getData().getPriorityLevel().getLevel() == tail.getData().getPriorityLevel().getLevel()) {
+				newNode.setPrevious(tail);
+				tail.setNext(newNode);
+				tail = newNode;
+			}
+
+			// Handle other cases
+			else {
+
+				// Find position where we need to
+				// insert.
+				Node start = head.getNext();
+
+				if (start == tail) {
+
+					(tail.getPrevious()).setNext(newNode);
+					newNode.setNext(tail);
+					newNode.setPrevious(tail.getPrevious());
+					tail.setPrevious(newNode);
+
+				} else {
+
+					while (start.getData().getPriorityLevel().getLevel() == PriorityLevel.HIGH.getLevel()) {
+
+						start = start.getNext();
+
+					}
+
+					if (start == tail) {
+
+						(tail.getPrevious()).setNext(newNode);
+						newNode.setNext(tail);
+						newNode.setPrevious(tail.getPrevious());
+						tail.setPrevious(newNode);
+
+					} else {
+
+						(start.getPrevious()).setNext(newNode);
+						newNode.setNext(start);
+						newNode.setPrevious(start.getPrevious());
+						start.setPrevious(newNode);
+					}
+
+				}
+
+			}
 
 		}
 
 		size++;
 	}
+	
+	
+	// ------------------------------------------------------------------
+	// METHOD TO REMOVE THE HEAD OF THE QUEUE
+	// ------------------------------------------------------------------
 
 	public Person removeHead() {
 
@@ -65,6 +125,11 @@ public class DLL {
 		return aux.getData();
 	}
 
+	
+	// ------------------------------------------------------------------
+	// METHOD TO ADD LOW PRIORITY TO THE QUEUE
+	// ------------------------------------------------------------------
+	
 	// the new object is going to receive just data as parameter
 	// because when instantiating a new object, both nodes are
 	// being set as "null"
@@ -84,6 +149,11 @@ public class DLL {
 
 		size++;
 	}
+	
+	
+	// ------------------------------------------------------------------
+	// METHOD TO REMOVE PEOPLE FROM THE BACK OF THE QUEUE
+	// ------------------------------------------------------------------
 
 	public Person removeTail() {
 
@@ -110,6 +180,11 @@ public class DLL {
 		return aux.getData();
 	}
 
+	
+	// ------------------------------------------------------------------
+	// METHOD TO ADD MEDIUM PRIORITY TO THE QUEUE
+	// ------------------------------------------------------------------
+	
 	public void addMedium(Person data) {
 
 		Node newNode = new Node(data);
